@@ -32,8 +32,4 @@ public class Main {
 		
 	}
 	
-	private static long maxTrialPoints(char[] tribes1, int[] points1, char[] tribes2, int[] points2) {
-		return 0;
-	}
-	
 }
