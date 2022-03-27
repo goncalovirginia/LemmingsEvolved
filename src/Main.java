@@ -27,7 +27,9 @@ public class Main {
 				points2[s] = in.nextInt();
 			}
 			
-			System.out.println((new Trial(tribes1, points1, tribes2, points2)).maxPoints());
+			int[] result = (new Trial(tribes1, points1, tribes2, points2)).maxPoints();
+			
+			System.out.printf("%d %d\n", result[0], result[1]);
 		}
 		
 	}
