@@ -13,9 +13,10 @@ public class Trial {
 	public int[] solve() {
 		int[][] maxPoints = new int[points1.length][points2.length];
 		int[][] minPairs = new int[points1.length][points2.length];
-
-		for (int i = 1; i < points1.length; i++) {
-			for (int j = 1; j < points2.length; j++) {
+		int i, j;
+		
+		for (i = 1; i < points1.length; i++) {
+			for (j = 1; j < points2.length; j++) {
 				if (tribes1[i] == tribes2[j]) {
 					maxPoints[i][j] = maxPoints[i-1][j-1] + points1[i] + points2[j];
 					minPairs[i][j] = 1;
@@ -36,7 +37,7 @@ public class Trial {
 			}
 		}
 		
-		return new int[] {maxPoints[points1.length-1][points2.length-1], minPairs[points1.length-1][points2.length-1]};
+		return new int[] {maxPoints[i][j], minPairs[i][j]};
 	}
 	
 }
