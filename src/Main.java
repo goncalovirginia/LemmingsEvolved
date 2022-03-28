@@ -8,30 +8,27 @@ public class Main {
 		
 		for (int t = 0; t < numTrials; t++) {
 			int numLemmings1 = in.nextInt();
-			char[] tribes1 = new char[numLemmings1];
-			int[] points1 = new int[numLemmings1];
+			char[] tribes1 = new char[numLemmings1+1];
+			int[] points1 = new int[numLemmings1+1];
 			
-			for (int s = 0; s < numLemmings1; s++) {
-				tribes1[s] = in.nextChar();
-				in.nextChar();
-				points1[s] = in.nextInt();
-			}
+			readSequence(in, numLemmings1, tribes1, points1);
 			
 			int numLemmings2 = in.nextInt();
-			char[] tribes2 = new char[numLemmings2];
-			int[] points2 = new int[numLemmings2];
+			char[] tribes2 = new char[numLemmings2+1];
+			int[] points2 = new int[numLemmings2+1];
 			
-			for (int s = 0; s < numLemmings2; s++) {
-				tribes2[s] = in.nextChar();
-				in.nextChar();
-				points2[s] = in.nextInt();
-			}
+			readSequence(in, numLemmings2, tribes2, points2);
 			
-			int[] result = (new Trial(tribes1, points1, tribes2, points2)).maxPoints();
-			
+			int[] result = (new Trial(tribes1, points1, tribes2, points2)).solve();
 			System.out.printf("%d %d\n", result[0], result[1]);
 		}
-		
+	}
+	
+	private static void readSequence(TurboScanner in, int numLemmings, char[] tribes, int[] points) throws IOException {
+		for (int l = 1; l <= numLemmings; l++) {
+			tribes[l] = in.nextChar(); in.nextChar();
+			points[l] = in.nextInt();
+		}
 	}
 	
 }
