@@ -11,8 +11,7 @@ public class Trial {
 	}
 	
 	public int[] solve() {
-		int[][] maxPoints = new int[points1.length][points2.length];
-		int[][] minPairs = new int[points1.length][points2.length];
+		int[][] maxPoints = new int[points1.length][points2.length], minPairs = new int[points1.length][points2.length];
 
 		for (int i = 1; i < points1.length; i++) {
 			for (int j = 1; j < points2.length; j++) {
