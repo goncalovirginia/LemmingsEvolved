@@ -1,20 +1,21 @@
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Arrays;
+import java.io.InputStreamReader;
 
 public class Main {
 	
 	public static void main(String[] args) throws IOException {
-		TurboScanner in = new TurboScanner(System.in);
-		int numTrials = in.nextInt();
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		int numTrials = Integer.parseInt(in.readLine());
 		
 		for (int t = 0; t < numTrials; t++) {
-			int numLemmings1 = in.nextInt();
+			int numLemmings1 = Integer.parseInt(in.readLine());
 			char[] tribes1 = new char[numLemmings1+1];
 			long[] points1 = new long[numLemmings1+1];
 			
 			readSequence(in, numLemmings1, tribes1, points1);
 			
-			int numLemmings2 = in.nextInt();
+			int numLemmings2 = Integer.parseInt(in.readLine());
 			char[] tribes2 = new char[numLemmings2+1];
 			long[] points2 = new long[numLemmings2+1];
 			
@@ -27,10 +28,11 @@ public class Main {
 		in.close();
 	}
 	
-	private static void readSequence(TurboScanner in, int numLemmings, char[] tribes, long[] points) throws IOException {
+	private static void readSequence(BufferedReader in, int numLemmings, char[] tribes, long[] points) throws IOException {
 		for (int l = 1; l <= numLemmings; l++) {
-			tribes[l] = in.nextChar(); in.nextChar();
-			points[l] = in.nextInt();
+			String[] lemming = in.readLine().split(" ");
+			tribes[l] = lemming[0].charAt(0);
+			points[l] = Long.parseLong(lemming[1]);
 		}
 	}
 	
