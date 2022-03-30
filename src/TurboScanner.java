@@ -18,7 +18,7 @@ class TurboScanner implements AutoCloseable {
 	public String next() throws IOException {
 		int i = 0;
 		char ascii = '_';
-		char[] chars = new char[13];
+		char[] chars = new char[11];
 		
 		while (ascii != ' ' && ascii != '\n') {
 			ascii = (char) br.read();
@@ -30,10 +30,6 @@ class TurboScanner implements AutoCloseable {
 	
 	public String nextLine() throws IOException {
 		return br.readLine();
-	}
-	
-	public byte nextByte() throws IOException {
-		return (byte) br.read();
 	}
 	
 	public char nextChar() throws IOException {

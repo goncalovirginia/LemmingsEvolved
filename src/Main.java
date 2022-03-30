@@ -1,11 +1,11 @@
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		TurboScanner in = new TurboScanner(System.in);
 		int numTrials = in.nextInt();
-		long[][] trialSolutions = new long[numTrials][2];
 		
 		for (int t = 0; t < numTrials; t++) {
 			int numLemmings1 = in.nextInt();
@@ -20,12 +20,11 @@ public class Main {
 			
 			readSequence(in, numLemmings2, tribes2, points2);
 			
-			trialSolutions[t] = solve(tribes1, points1, tribes2, points2);
+			long[] solution = solve(tribes1, points1, tribes2, points2);
+			System.out.printf("%d %d\n", solution[0], solution[1]);
 		}
 		
-		for (long[] trialSolution : trialSolutions) {
-			System.out.printf("%d %d\n", trialSolution[0], trialSolution[1]);
-		}
+		in.close();
 	}
 	
 	private static void readSequence(TurboScanner in, int numLemmings, char[] tribes, long[] points) throws IOException {
