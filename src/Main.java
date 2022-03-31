@@ -38,24 +38,36 @@ public class Main {
 	
 	private static long[] solve(char[] tribes1, long[] points1, char[] tribes2, long[] points2) {
 		long[][] maxPoints = new long[points1.length][points2.length], minPairs = new long[points1.length][points2.length];
+		long currMaxPoints, currMinPairs;
 		
 		for (int i = 1; i < points1.length; i++) {
 			for (int j = 1; j < points2.length; j++) {
-				maxPoints[i][j] = maxPoints[i-1][j-1];
-				minPairs[i][j] = minPairs[i-1][j-1];
+				currMaxPoints = maxPoints[i-1][j-1];
+				currMinPairs = minPairs[i-1][j-1];
 				
 				if (tribes1[i] == tribes2[j]) {
-					maxPoints[i][j] += points1[i] + points2[j];
-					minPairs[i][j] += 1;
+					currMaxPoints += points1[i] + points2[j];
+					currMinPairs += 1;
 				}
-				if (maxPoints[i-1][j] > maxPoints[i][j]) {
-					maxPoints[i][j] = maxPoints[i-1][j];
-					minPairs[i][j] = minPairs[i-1][j];
+				
+				if (maxPoints[i-1][j] > currMaxPoints) {
+					currMaxPoints = maxPoints[i-1][j];
+					currMinPairs = minPairs[i-1][j];
 				}
-				if (maxPoints[i][j-1] > maxPoints[i][j]) {
-					maxPoints[i][j] = maxPoints[i][j-1];
-					minPairs[i][j] = minPairs[i][j-1];
+				else if (maxPoints[i-1][j] == currMaxPoints && minPairs[i-1][j] < currMinPairs) {
+					currMinPairs = minPairs[i-1][j];
 				}
+				
+				if (maxPoints[i][j-1] > currMaxPoints) {
+					currMaxPoints = maxPoints[i][j-1];
+					currMinPairs = minPairs[i][j-1];
+				}
+				else if (maxPoints[i][j-1] == currMaxPoints && minPairs[i][j-1] < currMinPairs) {
+					currMinPairs = minPairs[i][j - 1];
+				}
+				
+				maxPoints[i][j] = currMaxPoints;
+				minPairs[i][j] = currMinPairs;
 			}
 		}
 		
