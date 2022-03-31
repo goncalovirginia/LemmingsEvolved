@@ -21,9 +21,7 @@ public class Main {
 			
 			readSequence(in, numLemmings2, tribes2, points2);
 			
-			long start = System.nanoTime();
 			long[] solution = solve(tribes1, points1, tribes2, points2);
-			System.out.println(System.nanoTime() - start);
 			System.out.printf("%d %d\n", solution[0], solution[1]);
 		}
 		
