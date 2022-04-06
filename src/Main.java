@@ -41,12 +41,9 @@ public class Main {
 		
 		for (int i = 1; i < points1.length; i++) {
 			for (int j = 1; j < points2.length; j++) {
-				maxPoints[i][j] = maxPoints[i-1][j-1];
-				minPairs[i][j] = minPairs[i-1][j-1];
-				
 				if (tribes1[i] == tribes2[j]) {
-					maxPoints[i][j] += points1[i] + points2[j];
-					minPairs[i][j] += 1;
+					maxPoints[i][j] = maxPoints[i-1][j-1] + points1[i] + points2[j];
+					minPairs[i][j] = minPairs[i-1][j-1] + 1;
 				}
 				
 				check(i, j, i-1, j, maxPoints, minPairs);
